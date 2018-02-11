@@ -1,10 +1,9 @@
-<?
-set_time_limit(0);
-$_SERVER['DOCUMENT_ROOT'] = '/d/www/t/tribuna.com.ru/docs';
-require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include/prolog_before.php");
+<?php
+	set_time_limit(0);
+	$_SERVER['DOCUMENT_ROOT'] = '/d/www/t/tribuna.com.ru/docs';
+	require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include/prolog_before.php");
 	// удаляем OFFERS без сезона
-?>
-<?
+	
 	CModule::IncludeModule("iblock");
 	$last_id = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/bitrix/log/last__del_offer_id.txt');
 	$arSelect = Array("ID", "IBLOCK_ID", "PROPERTY_SEZON");
@@ -26,7 +25,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include/prolog_be
 	if($next){
 		//echo '<meta http-equiv="refresh" content="0; url="http://www.tribuna.com.ru/bitrix/1c_delete_offers.php">'; 
 		exec("php /d/www/t/tribuna.com.ru/docs/bitrix/1c_delete_offers.php");
-	}else{
+		}else{
         file_put_contents($_SERVER['DOCUMENT_ROOT'].'/bitrix/log/last__del_offer_id.txt', '0');
 		die("THE END");	
 	}
