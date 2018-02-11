@@ -8,7 +8,7 @@
 		$last_id = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/bitrix/log/last__del_offer_id.txt');
 		$arSelect = Array("ID", "IBLOCK_ID", "PROPERTY_SEZON");
 		$arFilter = Array("IBLOCK_ID"=> 8, "PROPERTY_SEZON" => false, '>ID' => $last_id);
-		$res = CIBlockElement::GetList(Array('ID' => 'ASC'), $arFilter, false, Array('nTopCount'=>25), $arSelect);
+		$res = CIBlockElement::GetList(Array('ID' => 'ASC'), $arFilter, false, Array('nTopCount' => 25), $arSelect);
 		$next = false;
 		while($ob = $res->GetNextElement())
 		{
